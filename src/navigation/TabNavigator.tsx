@@ -1,7 +1,20 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { ExploreStack, CategoriesStack, StatusStack, CampaignsStack, TransactionsStack } from "./Stacks";
-import { CategoriesTabIcon, ExploreTabIcon, TabIcon } from "../components/Svgs/TabBarIcons";
+import {
+  ExploreStack,
+  CategoriesStack,
+  StatusStack,
+  CampaignsStack,
+  TransactionsStack,
+} from "./Stacks";
+import {
+  CategoriesTabIcon,
+  ExploreTabIcon,
+  StatusTabIcon,
+  TabIcon,
+  CampaignsTabIcon,
+  TransactionsTabIcon,
+} from "../components/Svgs/TabBarIcons";
 import { ColorPalette } from "../styles/ColorPalette";
 
 const Tab = createBottomTabNavigator();
@@ -37,7 +50,7 @@ const TabNavigator: React.FC = () => {
       <Tab.Screen
         options={{
           tabBarIcon: ({ focused }) => (
-            <TabIcon IconComponent={ExploreTabIcon} focused={focused} />
+            <TabIcon IconComponent={StatusTabIcon} focused={focused} />
           ),
         }}
         name="Durum"
@@ -46,7 +59,7 @@ const TabNavigator: React.FC = () => {
       <Tab.Screen
         options={{
           tabBarIcon: ({ focused }) => (
-            <TabIcon IconComponent={ExploreTabIcon} focused={focused} />
+            <TabIcon IconComponent={CampaignsTabIcon} focused={focused} />
           ),
         }}
         name="Kampanyalar"
@@ -55,7 +68,7 @@ const TabNavigator: React.FC = () => {
       <Tab.Screen
         options={{
           tabBarIcon: ({ focused }) => (
-            <TabIcon IconComponent={ExploreTabIcon} focused={focused} />
+            <TabIcon IconComponent={TransactionsTabIcon} focused={focused} />
           ),
         }}
         name="İşlemler"
