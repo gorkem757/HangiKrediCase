@@ -16,6 +16,7 @@ import {
   TransactionsTabIcon,
 } from "../components/Svgs/TabBarIcons";
 import { ColorPalette } from "../styles/ColorPalette";
+import TabBarHeader from "./TabBarHeader";
 
 const Tab = createBottomTabNavigator();
 
@@ -23,10 +24,13 @@ const TabNavigator: React.FC = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        headerShown: false,
+        headerShown: true,
         tabBarShowLabel: true,
         tabBarActiveTintColor: ColorPalette.Secondary500,
         tabBarInactiveTintColor: ColorPalette.Primary700,
+        header: ({ navigation, route, options }) => {
+          return <TabBarHeader />;
+        },
       }}
     >
       <Tab.Screen
