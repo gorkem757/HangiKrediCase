@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { ExploreStack } from "./Stacks";
-import { ExploreTabIcon, TabIcon } from "../components/Svgs/TabBarIcons";
+import { ExploreStack, CategoriesStack, StatusStack, CampaignsStack, TransactionsStack } from "./Stacks";
+import { CategoriesTabIcon, ExploreTabIcon, TabIcon } from "../components/Svgs/TabBarIcons";
 import { ColorPalette } from "../styles/ColorPalette";
 
 const Tab = createBottomTabNavigator();
@@ -12,8 +12,8 @@ const TabNavigator: React.FC = () => {
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: true,
-        tabBarActiveTintColor:ColorPalette.Secondary500,
-        tabBarInactiveTintColor:ColorPalette.Primary700
+        tabBarActiveTintColor: ColorPalette.Secondary500,
+        tabBarInactiveTintColor: ColorPalette.Primary700,
       }}
     >
       <Tab.Screen
@@ -28,11 +28,11 @@ const TabNavigator: React.FC = () => {
       <Tab.Screen
         options={{
           tabBarIcon: ({ focused }) => (
-            <TabIcon IconComponent={ExploreTabIcon} focused={focused} />
+            <TabIcon IconComponent={CategoriesTabIcon} focused={focused} />
           ),
         }}
         name="Kategoriler"
-        component={ExploreStack}
+        component={CategoriesStack}
       />
       <Tab.Screen
         options={{
@@ -41,7 +41,7 @@ const TabNavigator: React.FC = () => {
           ),
         }}
         name="Durum"
-        component={ExploreStack}
+        component={StatusStack}
       />
       <Tab.Screen
         options={{
@@ -50,7 +50,7 @@ const TabNavigator: React.FC = () => {
           ),
         }}
         name="Kampanyalar"
-        component={ExploreStack}
+        component={CampaignsStack}
       />
       <Tab.Screen
         options={{
@@ -59,7 +59,7 @@ const TabNavigator: React.FC = () => {
           ),
         }}
         name="İşlemler"
-        component={ExploreStack}
+        component={TransactionsStack}
       />
     </Tab.Navigator>
   );
