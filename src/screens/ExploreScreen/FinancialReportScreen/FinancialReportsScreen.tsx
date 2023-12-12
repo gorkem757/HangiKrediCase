@@ -33,7 +33,12 @@ const FinancialReportsScreen: React.FC = () => {
     <View style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <MainCard style={styles.cardStyle} />
-        <AboutCard style={styles.cardStyle} info={infos} initialRenderItemLimit={3}/>
+        <AboutCard
+          style={styles.cardStyle}
+          info={infos}
+          status={status}
+          initialRenderItemLimit={3}
+        />
       </ScrollView>
     </View>
   );

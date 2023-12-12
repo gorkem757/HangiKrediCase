@@ -1,16 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { ViewProps } from "react-native-svg/lib/typescript/fabric/utils";
-import { HKCard, HKImage } from "../../../../components";
+import { HKButton, HKCard, HKImage } from "../../../../components";
 import { ColorPalette } from "../../../../styles/ColorPalette";
 import { IInfo } from "../../../../interfaces";
+import AboutCardInfoItem from "./AboutCardInfoItem";
 
 interface AboutCardProps extends ViewProps {
   info: IInfo[];
   initialRenderItemLimit: number;
+  status: "idle" | "loading" | "succeeded" | "failed";
 }
+type AboutCardListVariant = "seeMore" | "seeLess";
 
 const AboutCard: React.FC<AboutCardProps> = (props) => {
+  //#region States
+  const [aboutCardListVariant, setAboutCardListVariant] =
+    useState<AboutCardListVariant>("seeMore");
+  //#endregion
+
+  //#region Functions
+  const getAboutCardListButtonTitle = (): string => {
+    if (aboutCardListVariant === "seeLess") {
+      return "Daha az gör";
+    }
+    return "Daha fazla gör";
+  };
+
+  //TODO: Return SvgComponent instead
+  const getAboutCardListButtonIcon = (): React.FC | string => {
+    if (aboutCardListVariant === "seeLess") {
+      return ">";
+    }
+    return "<";
+  };
+
+  const handleOnAboutCardListButtonPress = () => {
+    if (aboutCardListVariant === "seeLess") {
+      setAboutCardListVariant("seeMore");
+      return;
+    }
+    setAboutCardListVariant("seeLess");
+  };
+
+  //#endregion
+
   return (
     <View {...props}>
       <HKCard style={styles.container}>
@@ -22,9 +56,23 @@ const AboutCard: React.FC<AboutCardProps> = (props) => {
             style={styles.img}
           />
         </View>
-        {props.info?.map((info) => (
-          <Text>{info.title}</Text>
-        ))}
+        {props.status === "succeeded" && (
+          <>
+            {props.info?.map((info, index) => {
+              if (
+                aboutCardListVariant === "seeLess" ||
+                index < props.initialRenderItemLimit
+              )
+                return <AboutCardInfoItem item={info} />;
+            })}
+            <HKButton
+              title={getAboutCardListButtonTitle()}
+              variant="text-only"
+              onPress={handleOnAboutCardListButtonPress}
+              style={styles.aboutCardListButtonStyle}
+            />
+          </>
+        )}
       </HKCard>
     </View>
   );
@@ -62,6 +110,9 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   img: {},
+  aboutCardListButtonStyle: {
+    marginTop: 4,
+  },
 });
 
 export default AboutCard;
