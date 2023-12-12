@@ -19,7 +19,7 @@ const ExploreScreen: React.FC<ExploreScreenProps> = ({ navigation }) => {
     {
       icon: <CreditIconSvg />,
       title: "Finansal Rapor", //@ts-ignore
-      onPress: () => navigation.navigate("Finansal Rapor"),
+      onPress: () => navigation.navigate("FinancialReportsScreen"),
     },
     {
       icon: <CreditCardIconSvg />,

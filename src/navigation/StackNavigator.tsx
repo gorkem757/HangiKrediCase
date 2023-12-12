@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import TabNavigator from "./TabNavigator";
-import { FinancialReportsScreen } from "../screens";
+import {
+  CreateFinancialReportScreen,
+  FinancialReportsScreen,
+} from "../screens";
 import { useNavigationState } from "@react-navigation/native";
 
 const StackNavigator: React.FC = () => {
@@ -25,7 +28,16 @@ const StackNavigator: React.FC = () => {
       screenOptions={{ headerShown: currentScreen !== "BottomTabs" }}
     >
       <Stack.Screen name="BottomTabs" component={TabNavigator} />
-      <Stack.Screen name="Finansal Rapor" component={FinancialReportsScreen} />
+      <Stack.Screen
+        options={{ headerTitle: "Finansal Rapor" }}
+        name="FinancialReportsScreen"
+        component={FinancialReportsScreen}
+      />
+      <Stack.Screen
+        options={{ headerTitle: "Finansal Rapor" }}
+        name="CreateFinancialReportScreen"
+        component={CreateFinancialReportScreen}
+      />
     </Stack.Navigator>
   );
 };

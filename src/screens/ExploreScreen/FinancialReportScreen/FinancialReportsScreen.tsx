@@ -7,8 +7,15 @@ import { RootState } from "../../../redux/rootReducer";
 import HowToCreateCard from "./components/HowToCreateCard/HowToCreateCard";
 import { ColorPalette } from "../../../styles/ColorPalette";
 import { HKButton } from "../../../components";
+import { StackNavigationProp } from "@react-navigation/stack";
 
-const FinancialReportsScreen: React.FC = () => {
+type FinancialReportsScreenProps = {
+  navigation: StackNavigationProp<{}>;
+};
+
+const FinancialReportsScreen: React.FC<FinancialReportsScreenProps> = ({
+  navigation,
+}) => {
   //#region Hooks
   const dispatch = useDispatch();
   const { infos, status, error } = useSelector(
@@ -31,17 +38,17 @@ const FinancialReportsScreen: React.FC = () => {
           style={styles.ctaButton}
           title="Finansal Rapor al"
           variant="secondary"
-          onPress={() => {}}
+          // @ts-ignore
+          onPress={() => navigation.navigate("CreateFinancialReportScreen")}
         />
       </View>
     );
   };
   //#endregion
 
-  if (status !== "succeeded" || error) {
-    // TODO: Return skeleton for the AboutCardSection instead of not returning anything.
-    return <></>;
-  }
+  // if (status !== "succeeded" || error) {
+  //   // TODO: Return skeleton for the AboutCardSection instead of not returning anything.
+  // }
   return (
     <View style={styles.container}>
       <ScrollView
