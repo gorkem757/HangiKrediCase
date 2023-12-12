@@ -11,6 +11,7 @@ import { ColorPalette } from "../../../styles/ColorPalette";
 import { HKButton, HKCheckbox, HKInput } from "../../../components";
 import { Formik } from "formik";
 import * as yup from "yup";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 const FormSchema = yup.object({
   name: yup.string().required().min(2),
@@ -35,8 +36,13 @@ const FormSchema = yup.object({
     .required()
     .oneOf([true], "Açık rıza metnini okuyup, onaylayın."),
 });
+type CreateFinancialReportScreenProps = {
+  navigation: StackNavigationProp<{}>;
+};
 
-const CreateFinancialReportScreen: React.FC = () => {
+const CreateFinancialReportScreen: React.FC<
+  CreateFinancialReportScreenProps
+> = ({ navigation }) => {
   //#region Functions
   const renderFormDescription = () => {
     return (
@@ -76,6 +82,8 @@ const CreateFinancialReportScreen: React.FC = () => {
               "Detaylar için raporlarım ekranına gidin."
             );
             actions.resetForm();
+            // @ts-ignore
+            navigation.navigate("BottomTabs");
           }}
         >
           {(props) => (
