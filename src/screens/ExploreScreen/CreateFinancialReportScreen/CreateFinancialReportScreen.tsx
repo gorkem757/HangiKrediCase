@@ -76,7 +76,6 @@ const CreateFinancialReportScreen: React.FC<
           }}
           validationSchema={FormSchema}
           onSubmit={(values, actions) => {
-            console.log(values);
             Alert.alert(
               "Rapor hazırlandı!",
               "Detaylar için raporlarım ekranına gidin."
