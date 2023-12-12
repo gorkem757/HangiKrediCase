@@ -14,6 +14,7 @@ const Card: React.FC<CardProps> = ({ children, ...props }) => {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     alignItems: "center",
     justifyContent: "space-between",
     paddingHorizontal: 16,

@@ -1,6 +1,6 @@
-import axios, { AxiosInstance, AxiosResponse } from 'axios';
+import axios, { AxiosInstance, AxiosResponse } from "axios";
 
-interface ApiResponse<T> {
+export interface ApiResponse<T> {
   data: T;
   status: number;
 }
@@ -10,12 +10,9 @@ class BaseApiService {
 
   constructor() {
     this.axiosInstance = axios.create({
-      baseURL: 'YOUR_API_BASE_URL',
-      timeout: 5000, // set your desired timeout
+      baseURL: "https://apimocha.com/fr",
+      timeout: 5000,
     });
-
-    // Add any default headers or interceptors here
-    // this.axiosInstance.defaults.headers.common['Authorization'] = 'Bearer YOUR_ACCESS_TOKEN';
   }
 
   private handleResponse<T>(response: AxiosResponse): ApiResponse<T> {
@@ -51,4 +48,4 @@ class BaseApiService {
   }
 }
 
-export default new BaseApiService();
+export default BaseApiService;

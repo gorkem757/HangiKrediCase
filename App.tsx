@@ -5,6 +5,8 @@ import { Platform, SafeAreaView, StyleSheet, ViewStyle } from "react-native";
 import { ColorPalette } from "./src/styles/ColorPalette";
 import Constants from "expo-constants";
 import StackNavigator from "./src/navigation/StackNavigator";
+import { Provider } from "react-redux";
+import store from "./src/redux/store";
 
 const statusBarHeight = Constants.statusBarHeight;
 
@@ -14,11 +16,13 @@ export default function App() {
   };
 
   return (
-    <SafeAreaView style={[styles.container, safeAreaStyle]}>
-      <NavigationContainer>
-        <StackNavigator />
-      </NavigationContainer>
-    </SafeAreaView>
+    <Provider store={store}>
+      <SafeAreaView style={[styles.container, safeAreaStyle]}>
+        <NavigationContainer>
+          <StackNavigator />
+        </NavigationContainer>
+      </SafeAreaView>
+    </Provider>
   );
 }
 const styles = StyleSheet.create({
