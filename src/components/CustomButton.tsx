@@ -23,6 +23,7 @@ const HKButton: React.FC<PressableProps & ViewProps & HKButtonProps> = ({
   title,
   LeftIcon,
   RightIcon,
+  style,
   ...props
 }) => {
   //#region Dynamic Styles
@@ -43,7 +44,7 @@ const HKButton: React.FC<PressableProps & ViewProps & HKButtonProps> = ({
   //#endregion
 
   return (
-    <Pressable style={containerStyle} {...props}>
+    <Pressable style={[containerStyle, style]} {...props}>
       {LeftIcon && <LeftIcon />}
       <Text style={titleStyle}>{title}</Text>
       {RightIcon && <RightIcon />}

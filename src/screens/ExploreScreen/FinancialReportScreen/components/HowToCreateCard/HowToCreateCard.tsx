@@ -25,11 +25,6 @@ const HowToCreateCard: React.FC<HowToCreateCardProps> = (props) => {
   //#endregion
 
   //#region DynamicStyles
-  const dynamicDotStyle: ViewStyle = {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-  };
   //#endregion
 
   return (
@@ -68,7 +63,6 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     backgroundColor: ColorPalette.GenericWhite,
     borderRadius: 12,
-    marginBottom: 16,
   },
   carouselItemWrapper: {
     flex: 1,
