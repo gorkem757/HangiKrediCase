@@ -4,6 +4,7 @@ import { AboutCard, MainCard } from "./components";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchInfosAsync } from "../../../redux/FinancialReport/actions";
 import { RootState } from "../../../redux/rootReducer";
+import HowToCreateCard from "./components/HowToCreateCard/HowToCreateCard";
 
 const FinancialReportsScreen: React.FC = () => {
   //#region Hooks
@@ -39,6 +40,7 @@ const FinancialReportsScreen: React.FC = () => {
           status={status}
           initialRenderItemLimit={3}
         />
+        <HowToCreateCard />
       </ScrollView>
     </View>
   );

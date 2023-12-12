@@ -6,5 +6,6 @@ export const ColorPalette = {
   Secondary500: "#F26722",
   Neutral500: "#737373",
   Neutral600: "#525252",
-  Neutral800:"#262626"
+  Neutral800: "#262626",
+  Primary200: "#B7B6E4",
 };
