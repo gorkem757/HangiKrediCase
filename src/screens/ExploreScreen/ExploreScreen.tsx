@@ -29,15 +29,12 @@ const ExploreScreen: React.FC<ExploreScreenProps> = ({ navigation }) => {
     {
       icon: <HousingIconSvg />,
       title: "Hesabım",
-      onPress: () => {
-        console.log("Hesabım");
-      },
+      onPress: () => {},
     },
     {
       icon: <CalculationToolsIconSvg />,
       title: "İşlemler",
-      //@ts-ignore
-      onPress: () => console.log("İşlemler"),
+      onPress: () => {},
     },
   ];
   //#endregion
